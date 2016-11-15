@@ -30,8 +30,15 @@ TEST ACCOUNTS:
   // ---------- SCRIM ---------- //
   $("#container").append("<div class='menu-scrim'></div>");
 
-  $(".menu-toggle, #column *, .menu-scrim").click(function () {
+  // Auto dismiss menu on these events
+  $(".menu-toggle, #logo, #column *:not(#searchForm), .menu-scrim").click(function () {
     $("body").toggleClass("open");
+  });
+  $("#searchForm input").keypress(function (e) {
+    if (e.which == 13) {
+      $("body").toggleClass("open");
+      return false;
+    }
   });
 
   // ---------- LOADER ---------- //
